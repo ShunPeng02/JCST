@@ -1,0 +1,116 @@
+\documentclass{standalone}
+\usepackage[margin=1in]{geometry}
+\usepackage[hang,small,bf]{caption}
+\usepackage{tikz}
+\usepackage{braket}
+\usetikzlibrary{backgrounds,shadows.blur,fit,decorations.pathreplacing,shapes}
+
+\begin{document}
+\begin{tikzpicture}[scale=0.8, transform shape]
+
+\tikzstyle{basicshadow}=[blur shadow={shadow blur steps=8, shadow xshift=0.7pt, shadow yshift=-0.7pt, shadow scale=1.02}]\tikzstyle{basic}=[draw,fill=white,basicshadow]
+\tikzstyle{{operator}}=[basic,minimum size=1.5em]
+\tikzstyle{phase}=[fill=black,shape=circle,minimum size=0.1cm,inner sep=0pt,outer sep=0pt,draw=black]
+\tikzstyle{{none}}=[inner sep=0pt,outer sep=-.5pt,minimum height=0.5cm+1pt]
+\tikzstyle{{measure}}=[operator,inner sep=0pt,minimum height=0.5cm,minimum width=0.75cm]
+\tikzstyle{{xstyle}}=[circle,basic,minimum height=0.35cm,minimum width=0.35cm,inner sep=-1pt,very thin]
+\tikzset{
+shadowed/.style={preaction={transform canvas={shift={(0.5pt,-0.5pt)}}, draw=gray, opacity=0.4}},
+}
+\tikzstyle{swapstyle}=[inner sep=-1pt, outer sep=-1pt, minimum width=0pt]
+\tikzstyle{edgestyle}=[very thin]
+
+\node[none] (line0_gate0) at (0.1,-0) {$\Ket{0}$};
+\node[none] (line0_gate1) at (0.5,-0) {};
+\node[none,minimum height={gate_height}cm,outer sep=0] ({self._op(line, offset=1)}) at (0.75,-0) {};
+\node[none] (line0_gate3) at (1.0,-0) {};
+\draw[operator,edgestyle,outer sep=0.5cm] ([yshift=0.25cm]line0_gate1) rectangle ([yshift=-0.25cm]line0_gate3) node[pos=.5] {H};
+\draw (line0_gate0) edge[edgestyle] (line0_gate1);
+\node[none] (line3_gate0) at (0.1,-3) {$\Ket{0}$};
+\node[xstyle] (line3_gate1) at (0.5,-3) {};
+\draw[edgestyle] (line3_gate1.north)--(line3_gate1.south);
+\draw[edgestyle] (line3_gate1.west)--(line3_gate1.east);
+\draw (line3_gate0) edge[edgestyle] (line3_gate1);
+\node[none] (line3_gate2) at (1.05,-3) {};
+\node[none,minimum height={gate_height}cm,outer sep=0] ({self._op(line, offset=1)}) at (1.3,-3) {};
+\node[none] (line3_gate4) at (1.55,-3) {};
+\draw[operator,edgestyle,outer sep=0.5cm] ([yshift=0.25cm]line3_gate2) rectangle ([yshift=-0.25cm]line3_gate4) node[pos=.5] {H};
+\draw (line3_gate1) edge[edgestyle] (line3_gate2);
+\node[xstyle] (line3_gate5) at (1.9500000000000002,-3) {};
+\draw[edgestyle] (line3_gate5.north)--(line3_gate5.south);
+\draw[edgestyle] (line3_gate5.west)--(line3_gate5.east);
+\node[phase] (line0_gate4) at (1.9500000000000002,-0) {};
+\draw (line0_gate4) edge[edgestyle] (line3_gate5);
+\draw (line3_gate4) edge[edgestyle] (line3_gate5);
+\draw (line0_gate3) edge[edgestyle] (line0_gate4);
+\node[none] (line0_gate5) at (2.5000000000000004,-0) {};
+\node[none,minimum height={gate_height}cm,outer sep=0] ({self._op(line, offset=1)}) at (2.7500000000000004,-0) {};
+\node[none] (line0_gate7) at (3.0000000000000004,-0) {};
+\draw[operator,edgestyle,outer sep=0.5cm] ([yshift=0.25cm]line0_gate5) rectangle ([yshift=-0.25cm]line0_gate7) node[pos=.5] {H};
+\draw (line0_gate4) edge[edgestyle] (line0_gate5);
+\node[measure,edgestyle] (line0_gate8) at (3.5000000000000004,-0) {};
+\draw[edgestyle] ([yshift=-0.18cm,xshift=0.07500000000000001cm]line0_gate8.west) to [out=60,in=180] ([yshift=0.035cm]line0_gate8.center) to [out=0, in=120] ([yshift=-0.18cm,xshift=-0.07500000000000001cm]line0_gate8.east);
+\draw[edgestyle] ([yshift=-0.18cm]line0_gate8.center) to ([yshift=-0.07500000000000001cm,xshift=-0.18cm]line0_gate8.north east);
+\draw (line0_gate7) edge[edgestyle] (line0_gate8);
+\node[none] (line0_gate9) at (4.55,-0) {};
+\draw ([yshift=0.15cm]line0_gate9.center) edge [edgestyle] ([yshift=-0.15cm]line0_gate9.center);
+\draw ([yshift=0.02cm]line0_gate8.east) edge[edgestyle] ([yshift=0.02cm]line0_gate9.west);
+\draw ([yshift=-0.02cm]line0_gate8.east) edge[edgestyle] ([yshift=-0.02cm]line0_gate9.west);
+\node[none] (line1_gate0) at (2.5000000000000004,-1) {$\Ket{0}$};
+\node[none] (line1_gate1) at (2.900000000000001,-1) {};
+\node[none,minimum height={gate_height}cm,outer sep=0] ({self._op(line, offset=1)}) at (3.150000000000001,-1) {};
+\node[none] (line1_gate3) at (3.400000000000001,-1) {};
+\draw[operator,edgestyle,outer sep=0.5cm] ([yshift=0.25cm]line1_gate1) rectangle ([yshift=-0.25cm]line1_gate3) node[pos=.5] {H};
+\draw (line1_gate0) edge[edgestyle] (line1_gate1);
+\node[xstyle] (line3_gate6) at (3.8000000000000007,-3) {};
+\draw[edgestyle] (line3_gate6.north)--(line3_gate6.south);
+\draw[edgestyle] (line3_gate6.west)--(line3_gate6.east);
+\node[phase] (line1_gate4) at (3.8000000000000007,-1) {};
+\draw (line1_gate4) edge[edgestyle] (line3_gate6);
+\draw (line3_gate5) edge[edgestyle] (line3_gate6);
+\draw (line1_gate3) edge[edgestyle] (line1_gate4);
+\node[none] (line1_gate5) at (4.3500000000000005,-1) {};
+\node[none,minimum height={gate_height}cm,outer sep=0] ({self._op(line, offset=1)}) at (4.6000000000000005,-1) {};
+\node[none] (line1_gate7) at (4.8500000000000005,-1) {};
+\draw[operator,edgestyle,outer sep=0.5cm] ([yshift=0.25cm]line1_gate5) rectangle ([yshift=-0.25cm]line1_gate7) node[pos=.5] {H};
+\draw (line1_gate4) edge[edgestyle] (line1_gate5);
+\node[measure,edgestyle] (line1_gate8) at (5.3500000000000005,-1) {};
+\draw[edgestyle] ([yshift=-0.18cm,xshift=0.07500000000000001cm]line1_gate8.west) to [out=60,in=180] ([yshift=0.035cm]line1_gate8.center) to [out=0, in=120] ([yshift=-0.18cm,xshift=-0.07500000000000001cm]line1_gate8.east);
+\draw[edgestyle] ([yshift=-0.18cm]line1_gate8.center) to ([yshift=-0.07500000000000001cm,xshift=-0.18cm]line1_gate8.north east);
+\draw (line1_gate7) edge[edgestyle] (line1_gate8);
+\node[none] (line1_gate9) at (6.4,-1) {};
+\draw ([yshift=0.15cm]line1_gate9.center) edge [edgestyle] ([yshift=-0.15cm]line1_gate9.center);
+\draw ([yshift=0.02cm]line1_gate8.east) edge[edgestyle] ([yshift=0.02cm]line1_gate9.west);
+\draw ([yshift=-0.02cm]line1_gate8.east) edge[edgestyle] ([yshift=-0.02cm]line1_gate9.west);
+\node[none] (line2_gate0) at (4.3500000000000005,-2) {$\Ket{0}$};
+\node[none] (line2_gate1) at (4.75,-2) {};
+\node[none,minimum height={gate_height}cm,outer sep=0] ({self._op(line, offset=1)}) at (5.0,-2) {};
+\node[none] (line2_gate3) at (5.25,-2) {};
+\draw[operator,edgestyle,outer sep=0.5cm] ([yshift=0.25cm]line2_gate1) rectangle ([yshift=-0.25cm]line2_gate3) node[pos=.5] {H};
+\draw (line2_gate0) edge[edgestyle] (line2_gate1);
+\node[xstyle] (line3_gate7) at (5.6499999999999995,-3) {};
+\draw[edgestyle] (line3_gate7.north)--(line3_gate7.south);
+\draw[edgestyle] (line3_gate7.west)--(line3_gate7.east);
+\node[phase] (line2_gate4) at (5.6499999999999995,-2) {};
+\draw (line2_gate4) edge[edgestyle] (line3_gate7);
+\draw (line3_gate6) edge[edgestyle] (line3_gate7);
+\draw (line2_gate3) edge[edgestyle] (line2_gate4);
+\node[none] (line2_gate5) at (6.199999999999998,-2) {};
+\node[none,minimum height={gate_height}cm,outer sep=0] ({self._op(line, offset=1)}) at (6.449999999999998,-2) {};
+\node[none] (line2_gate7) at (6.699999999999998,-2) {};
+\draw[operator,edgestyle,outer sep=0.5cm] ([yshift=0.25cm]line2_gate5) rectangle ([yshift=-0.25cm]line2_gate7) node[pos=.5] {H};
+\draw (line2_gate4) edge[edgestyle] (line2_gate5);
+\node[measure,edgestyle] (line2_gate8) at (7.199999999999998,-2) {};
+\draw[edgestyle] ([yshift=-0.18cm,xshift=0.07500000000000001cm]line2_gate8.west) to [out=60,in=180] ([yshift=0.035cm]line2_gate8.center) to [out=0, in=120] ([yshift=-0.18cm,xshift=-0.07500000000000001cm]line2_gate8.east);
+\draw[edgestyle] ([yshift=-0.18cm]line2_gate8.center) to ([yshift=-0.07500000000000001cm,xshift=-0.18cm]line2_gate8.north east);
+\draw (line2_gate7) edge[edgestyle] (line2_gate8);
+\node[none] (line2_gate9) at (8.249999999999998,-2) {};
+\draw ([yshift=0.15cm]line2_gate9.center) edge [edgestyle] ([yshift=-0.15cm]line2_gate9.center);
+\draw ([yshift=0.02cm]line2_gate8.east) edge[edgestyle] ([yshift=0.02cm]line2_gate9.west);
+\draw ([yshift=-0.02cm]line2_gate8.east) edge[edgestyle] ([yshift=-0.02cm]line2_gate9.west);
+\node[none] (line3_gate8) at (6.199999999999998,-3) {};
+\draw ([yshift=0.15cm]line3_gate8.center) edge [edgestyle] ([yshift=-0.15cm]line3_gate8.center);
+\draw (line3_gate7) edge[edgestyle] (line3_gate8);
+
+\end{tikzpicture}
+\end{document}
